@@ -12,14 +12,14 @@
     {% endif %}
 {% endfor %}
 
-{% for party in partys %}
-    {% if {{ party.name }} == 'Techno' %}
-        <div>Für die {{ party.name }} sind noch {{ party.seats }} frei!</div>
-    {% elseif {{ party.name }} == 'Rock' %}
-        <div>ACHTUNG, für die {{ party.name }} sind nur noch {{ party.seats }} frei!!</div>
-    {% elseif {{ party.name }} == 'Hip Hop' %}
-        <div>{{ party.name }} Party ist ausverkauft!!!</div>
-    {% endif %}
-        <div>Keine Informationen vorhanden!</div>
-{% endfor %}
+{#{% for party in partys %}#}
+{#    {% if {{ party.name }} == 'Techno' %}#}
+{#        <div>Für die {{ party.name }} sind noch {{ party.seats }} frei!</div>#}
+{#    {% elseif {{ party.name }} == 'Rock' %}#}
+{#        <div>ACHTUNG, für die {{ party.name }} sind nur noch {{ party.seats }} frei!!</div>#}
+{#    {% elseif {{ party.name }} == 'Hip Hop' %}#}
+{#        <div>{{ party.name }} Party ist ausverkauft!!!</div>#}
+{#    {% endif %}#}
+{#        <div>Keine Informationen vorhanden!</div>#}
+{#{% endfor %}#}
 
