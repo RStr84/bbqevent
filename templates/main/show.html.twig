@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+        {{ parent() }}
+    Events
+{% endblock %}
+
+{% block body %}
+    <div>
+        Das Event mit der ID [{{ event.id }}] beinhaltet folgende Daten zu Name, Beschreibung, Ort und verfügbare
+        Plätze:<br>
+        <br>-{{ event.name }}<br>
+        -{{ event.description }}<br>
+        -{{ event.location }}<br>
+        -{{ event.bookedSeats }}
+    </div>
+{% endblock %}
