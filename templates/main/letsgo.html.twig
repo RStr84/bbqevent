@@ -1,25 +1,26 @@
 <div>Das ist eine {{ name }} Party!</div>
-
+<br>
 {# Syntax fuer Kommentare #}
 
+
+{# daten1 #}
+{#{% for x in partys %}#}
+{#    {% if x == 'Party 2' %}#}
+{#        <div>Fällt ins Wasser!</div>#}
+{#    {% elseif x == 'Party 3' %}#}
+{#        <div>Super Party</div>#}
+{#    {% else %}#}
+{#        <div>{{ x }}</div>#}
+{#    {% endif %}#}
+{#{% endfor %}#}
+
+{# daten2 #}
 {% for x in partys %}
-    {% if x == 'Party 2' %}
-        <div>Fällt ins Wasser!</div>
-    {% elseif x == 'Party 3' %}
-        <div>Super Party</div>
+    {% if x.seats == 0 %}
+        <div>Die {{ x.name }} Party ist ausverkauft!!!</div>
+    {% elseif x.seats <= 10 %}
+        <div>Für die {{ x.name }} Party sind nur noch {{ x.seats }} Plätze frei!!</div>
     {% else %}
-        <div>{{ x }}</div>
+        <div>Die {{ x.name }} Party hat noch {{ x.seats }} Plätze verfügbar!</div>
     {% endif %}
 {% endfor %}
-
-{% for party in partys %}
-    {% if {{ party.name }} == 'Techno' %}
-        <div>Für die {{ party.name }} sind noch {{ party.seats }} frei!</div>
-    {% elseif {{ party.name }} == 'Rock' %}
-        <div>ACHTUNG, für die {{ party.name }} sind nur noch {{ party.seats }} frei!!</div>
-    {% elseif {{ party.name }} == 'Hip Hop' %}
-        <div>{{ party.name }} Party ist ausverkauft!!!</div>
-    {% endif %}
-        <div>Keine Informationen vorhanden!</div>
-{% endfor %}
-
