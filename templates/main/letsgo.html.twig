@@ -1,3 +1,7 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+
 {# Beispiel twig div #}
 {# <div>Das ist eine {{ name }} Party!</div> #}
 {# <br> #}
@@ -39,6 +43,18 @@
     {% else %}
         <div>Das {{ x.name }} Event hat noch {{ x.seats }} Plätze verfügbar!</div>
     {% endif %}
+{#    <a href='show/{{ x.id }}'>Link</a>#}
+    <a href='{{ path('app_main_show',{id: x.id}) }}'>Link</a>
 {% endfor %}
+
+<div class="card w-75 mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+    </div>
+</div>
+
+{% endblock %}
 
 

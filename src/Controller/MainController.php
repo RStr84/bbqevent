@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController
 
 {
-    #[Route('/')]
+    #[Route('/', name: 'app_main_letsgo')]
     public function letsgo(EventRepository $eventRepository): Response
     {
 
@@ -42,7 +42,7 @@ class MainController extends AbstractController
 
 
     /// 2.Version ///
-    #[Route('/show/{id}')]
+    #[Route('/show/{id}', name: 'app_main_show')]
     public function show(string $id = null, EventRepository $eventRepository): Response
     {
         $event = $eventRepository->findById($id);
