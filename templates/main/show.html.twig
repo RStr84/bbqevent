@@ -7,11 +7,11 @@
 
 {% block body %}
     <div>
-        Das Event mit der ID [{{ event.id }}] beinhaltet folgende Daten zu Name, Beschreibung, Ort und verfügbare
-        Plätze:<br>
-        <br>-{{ event.name }}<br>
-        -{{ event.description }}<br>
-        -{{ event.location }}<br>
-        -{{ event.bookedSeats }}
+        Das Event mit der ID [{{ event.id }}] beinhaltet folgende Daten:<br>
+        <br>
+        Name: {{ event.name }}<br>
+        Beschreibung: {{ event.description }}<br>
+        Location: {{ event.location }}<br>
+        Gebuchte Plätze: {{ event.bookedSeats }}<br>
     </div>
 {% endblock %}
