@@ -7,6 +7,6 @@
 
 {% block content %}
     {% for location in locations %}
-        <div> {{ location.name }} <a href="{{ path('app_location_show', {id: location.id}) }}">Details</a></div>
+        <div><a href="{{ path('app_location_show', {id: location.id}) }}">{{ location.name }}</a></div>
     {%  endfor %}
 {% endblock %}
