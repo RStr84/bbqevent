@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Repository\EventRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -33,6 +35,21 @@ class EventController extends AbstractController
     public function delete(int $id, EventRepository $eventRepository): Response
     {
         return $this->render('event/delete.html.twig');
+    }
+
+    #[Route('/new', name: 'app_event_new')]
+    public function new(EntityManagerInterface $entityManager) : Response
+    {
+        $event = new Event();
+        $event->setName('Techno')
+            ->setDescription('super Techno Party')
+            ->setBookedSeats(150);
+
+//        dd($event);
+        $entityManager->persist($event);
+        $entityManager->flush();
+//        dd($event);
+        return new Response('Ich bin drin!');
     }
 
 
