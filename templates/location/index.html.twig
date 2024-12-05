@@ -5,7 +5,7 @@
     Index
 {% endblock %}
 
-{% block body %}
+{% block content %}
     {% for location in locations %}
         <div> {{ location.name }} <a href="{{ path('app_location_show', {id: location.id}) }}">Details</a></div>
     {%  endfor %}
