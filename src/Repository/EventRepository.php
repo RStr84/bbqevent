@@ -15,7 +15,7 @@ class EventRepository
         return [$event1, $event2, $event3];
     }
 
-    public function findById($id): Event|null
+    public function findById(int $id): Event|null
     {
        $events = $this->findAll();
        foreach ($events as $event) {

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    Events
+    
+{% endblock %}
+
+{% block body %}
+    <div>
+        Das Event mit der ID [{{ event.id }}] beinhaltet folgende Daten:<br>
+        <br>
+        Name: {{ event.name }}<br>
+        Beschreibung: {{ event.description }}<br>
+        Location: {{ event.location }}<br>
+        Gebuchte Plätze: {{ event.bookedSeats }}<br>
+        <br>
+
+
+        <a class='btn-primary btn' href='{{ path('app_event_edit', {id: event.id}) }}'>edit</a>
+        <a class='btn-danger btn' href='{{ path('app_event_delete', {id: event.id}) }}'>delete</a>
+    </div>
+{% endblock %}

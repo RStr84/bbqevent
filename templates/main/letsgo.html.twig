@@ -1,5 +1,16 @@
 {%  extends 'base.html.twig' %}
 
+{% block title %}
+    {{ parent() }}
+    Startseite
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block head %}
+    <img src="../pictures/bbqstart.jpg" class="img-fluid" alt="BBQ-SuperEventCompany">
+{% endblock %}
+
 {% block body %}
 
 {# Beispiel twig div #}
@@ -35,26 +46,78 @@
 {# <div>Das ist eine {{ party1.name }} Party und es sind {{ party1.seats}} Plätze verfügbar!</div> #}
 
 {# daten 4 #}
-{% for x in events %}
-    {% if x.seats == 0 %}
-        <div>Das {{ x.name }} Event ist ausverkauft!!!</div>
-    {% elseif x.seats <= 10 %}
-        <div>Für das {{ x.name }} Event sind nur noch {{ x.seats }} Plätze frei!!</div>
-    {% else %}
-        <div>Das {{ x.name }} Event hat noch {{ x.seats }} Plätze verfügbar!</div>
-    {% endif %}
+{#{% for x in events %}#}
+{#    {% if x.seats == 0 %}#}
+{#        <div>Das {{ x.name }} Event ist ausverkauft!!!</div>#}
+{#    {% elseif x.seats <= 10 %}#}
+{#        <div>Für das {{ x.name }} Event sind nur noch {{ x.seats }} Plätze frei!!</div>#}
+{#    {% else %}#}
+{#        <div>Das {{ x.name }} Event hat noch {{ x.seats }} Plätze verfügbar!</div>#}
+{#    {% endif %}#}
 {#    <a href='show/{{ x.id }}'>Link</a>#}
-    <a href='{{ path('app_main_show',{id: x.id}) }}'>Link</a>
-{% endfor %}
+{#    <a href='{{ path('app_main_show',{id: x.id}) }}'>Link</a>#}
+{#{% endfor %}#}
 
-<div class="card w-75 mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Button</a>
+    <div class="container-fluid">
+        <img src="../pictures/bbqstart.jpg" class="img-fluid" alt="Titelbild">
     </div>
-</div>
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href={{ path('app_event_index') }}>Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Locations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Booking</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Admin</a>
+        </li>
+    </ul>
+
+
 
 {% endblock %}
 
+{#<style>#}
+{#    body {#}
+{#        background-image: url("../pictures/bbqstart.jpg");#}
+{#    }#}
+{#</style>#}
 
+
+{#<table class="table">#}
+{#    <thead>#}
+{#    <tr>#}
+{#        <th scope="col">#</th>#}
+{#        <th scope="col">Name</th>#}
+{#        <th scope="col">Description</th>#}
+{#        <th scope="col">Location</th>#}
+{#        <th scope="col">Booked Seats</th>#}
+{#    </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{#    <tr>#}
+{#        <th scope="row">1</th>#}
+{#        <td>{{ events.getId }}</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th scope="row">2</th>#}
+{#        <td>{{ events.getName }}</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th scope="row">3</th>#}
+{#        <td>{{ getDescription }}</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th scope="row">4</th>#}
+{#        <td>{{ getLocation }}</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th scope="row">5</th>#}
+{#        <td>{{ getBookedSeats }}</td>#}
+{#    </tr>#}
+{#    </tbody>#}
+{#</table>#}

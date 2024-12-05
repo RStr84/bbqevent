@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    Index
+{% endblock %}
+
+{% block body %}
+    {% for event in events %}
+<div> {{ event.name }} <a href="{{ path('app_event_show', {id: event.id}) }}">Details</a></div>
+    {%  endfor %}
+{% endblock %}
+
