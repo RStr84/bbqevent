@@ -27,5 +27,18 @@ class LocationRepository
         return null;
     }
 
+    /// Alternative zu findById ///
+    public function find(int $id): Location|null
+    {
+        foreach ($this->findAll() as $location) {
+            if ($id == $location->getId()) {
+                return $location;
+            }
+
+        } return null;
+
+
+    }
+
 
 }
