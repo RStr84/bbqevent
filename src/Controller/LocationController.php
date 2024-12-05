@@ -33,6 +33,7 @@ class LocationController extends AbstractController
     public function delete(int $id, LocationRepository $locationRepository): Response
     {
         return $this->render('location/delete.html.twig');
+//        return new Response('Hier kommt Delete hin!'), wenn kein twig erstellen
     }
 
 
