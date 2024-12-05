@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    Index
+{% endblock %}
+
+{% block body %}
+    {% for location in locations %}
+        <div> {{ location.name }} <a href="{{ path('app_location_show', {id: location.id}) }}">Details</a></div>
+    {%  endfor %}
+{% endblock %}

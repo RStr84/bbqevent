@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    Locations
+
+{% endblock %}
+
+{% block body %}
+    <div>
+        Die Location mit der ID [{{ location.id }}] beinhaltet folgende Daten:<br>
+        <br>
+        Name: {{ location.name }}<br>
+        Kapazität: {{ location.capacity }}<br>
+        Adresse: {{ location.address }}<br>
+        <br>
+
+
+        <a class='btn-primary btn' href='{{ path('app_location_edit', {id: location.id}) }}'>edit</a>
+        <a class='btn-danger btn' href='{{ path('app_location_delete', {id: location.id}) }}'>delete</a>
+    </div>
+{% endblock %}
