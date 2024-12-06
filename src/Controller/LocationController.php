@@ -26,15 +26,27 @@ class LocationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_location_edit')]
-    public function edit(int $id, LocationRepository $locationRepository): Response
+    public function edit(Location $location, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('location/edit.html.twig');
+        $location->setName('The Street');
+        $entityManager->persist($location);
+        $entityManager->flush();
+
+//        dd($location);
+        return $this->redirectToRoute('app_location_show', ['id' => $location->getId()]);
     }
 
     #[Route('/{id}/delete', name: 'app_location_delete')]
-    public function delete(int $id, LocationRepository $locationRepository): Response
+    /// Umständliche Methode ///
+//    public function delete(int $id, LocationRepository $locationRepository, EntityManagerInterface $entityManager): Response
+    public function delete(Location $location, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('location/delete.html.twig');
+//        $location = $locationRepository->find($id);
+
+        $entityManager->remove($location);
+        $entityManager->flush();
+//        dd($location);
+        return new Response('deleted');
 //        $location = $locationRepository->findById($id);
 //        return new Response('Hier kommt Delete hin!'), wenn kein twig erstellen
     }
