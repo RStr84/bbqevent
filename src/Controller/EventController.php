@@ -16,13 +16,17 @@ class EventController extends AbstractController
     #[Route('/', name: 'app_event_index')]
     public function index(EventRepository $eventRepository): Response
     {
+
+        $data = $eventRepository->findAll();
+//        dd($data);
+
         return $this->render('event/index.html.twig', ['events' => $eventRepository->findAll()]);
     }
 
     #[Route('/show/{id}', name: 'app_event_show')]
     public function show(int $id, EventRepository $eventRepository): Response
     {
-        return $this->render('event/show.html.twig', ["event" => $eventRepository->findById($id)]);
+        return $this->render('event/show.html.twig', ["event" => $eventRepository->find($id)]);
     }
 
     #[Route('/{id}/edit', name: 'app_event_edit')]

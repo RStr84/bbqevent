@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Model\Event;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +44,7 @@ class MainController extends AbstractController
     #[Route('/show/{id}', name: 'app_main_show')]
     public function show(string $id = null, EventRepository $eventRepository): Response
     {
-        $event = $eventRepository->findById($id);
+        $event = $eventRepository->find($id);
         if($event) {
             return $this->render('main/show.html.twig', ['event' => $event]);
         } else {

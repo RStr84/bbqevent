@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Location;
 use App\Repository\LocationRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -20,7 +22,7 @@ class LocationController extends AbstractController
     #[Route('/show/{id}', name: 'app_location_show')]
     public function show(int $id, LocationRepository $locationRepository): Response
     {
-        return $this->render('location/show.html.twig', ["location" => $locationRepository->findById($id)]);
+        return $this->render('location/show.html.twig', ["location" => $locationRepository->find($id)]);
     }
 
     #[Route('/{id}/edit', name: 'app_location_edit')]
@@ -38,5 +40,19 @@ class LocationController extends AbstractController
     }
 
 
+    #[Route('/new', name: 'app_location_new')]
+    public function new(EntityManagerInterface $entityManager) : Response
+    {
+        $location = new Location();
+        $location->setName('Alex')
+            ->setCapacity(500)
+            ->setAddress("Alexanderplatz 1, 10178 Berlin");
+
+//        dd($location);
+        $entityManager->persist($location);
+        $entityManager->flush();
+//        dd($location);
+        return new Response('Ich bin drin!');
+    }
 
 }
