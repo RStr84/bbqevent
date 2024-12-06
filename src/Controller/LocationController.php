@@ -44,9 +44,9 @@ class LocationController extends AbstractController
     public function new(EntityManagerInterface $entityManager) : Response
     {
         $location = new Location();
-        $location->setName('Alex')
-            ->setCapacity(500)
-            ->setAddress("Alexanderplatz 1, 10178 Berlin");
+        $location->setName('The Street')
+            ->setCapacity(10000)
+            ->setAddress("Potsdamer Strasse 2, 10785 Berlin");
 
 //        dd($location);
         $entityManager->persist($location);
