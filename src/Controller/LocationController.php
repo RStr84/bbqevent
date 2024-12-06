@@ -46,7 +46,7 @@ class LocationController extends AbstractController
         $entityManager->remove($location);
         $entityManager->flush();
 //        dd($location);
-        return new Response('deleted');
+        return $this->redirectToRoute('app_location_index');
 //        $location = $locationRepository->findById($id);
 //        return new Response('Hier kommt Delete hin!'), wenn kein twig erstellen
     }
