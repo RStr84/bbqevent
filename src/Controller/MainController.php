@@ -42,7 +42,7 @@ class MainController extends AbstractController
 
     /// 2.Version ///
     #[Route('/show/{id}', name: 'app_main_show')]
-    public function show(string $id = null, EventRepository $eventRepository): Response
+    public function show(int $id, EventRepository $eventRepository): Response
     {
         $event = $eventRepository->find($id);
         if($event) {
