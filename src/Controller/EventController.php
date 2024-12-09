@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -51,8 +52,9 @@ class EventController extends AbstractController
     }
 
     #[Route('/new', name: 'app_event_new')]
-    public function new(EntityManagerInterface $entityManager) : Response
+    public function new(EntityManagerInterface $entityManager, Request $request) : Response
     {
+//        dd($request->getHost());
         $event = new Event();
         $event->setName('Techno')
             ->setDescription('super Techno Party')
@@ -63,6 +65,18 @@ class EventController extends AbstractController
         $entityManager->flush();
 //        dd($event);
         return new Response('Ich bin drin!');
+    }
+
+
+    #[Route('/test', name: 'app_event_test')]
+    public function test(Request $request)
+    {
+        if ($request->isMethod('GET')) {
+            return $this->render('post.html.twig');
+        } elseif ($request->isMethod('POST')) {
+            $var = $request->request->all()['key'];
+            return new Response("Datenbanksachen $var");
+        }
     }
 
 
