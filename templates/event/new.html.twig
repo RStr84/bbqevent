@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+
+    {{ parent() }}
+    New
+
+{% endblock %}
+
 {% block content %}
 
 {#    <div>Bitte Daten einfügen!</div>#}
 {#    <br>#}
+
     {{ form(form) }}
 
 
@@ -21,11 +29,6 @@
 {#        <br>#}
 {#        <input type="submit" name="create">#}
 {#    </form>#}
-
-
-{% endblock %}
-
-{% block title %}
 
 {% endblock %}
 

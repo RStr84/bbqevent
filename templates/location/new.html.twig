@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+
+    {{ parent() }}
+    New
+
+{% endblock %}
+
 {% block content %}
 
     {{ form(form) }}
 
 {% endblock %}
 
-{% block title %}
 
-{% endblock %}
 
