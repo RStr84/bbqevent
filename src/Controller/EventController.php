@@ -32,16 +32,25 @@ class EventController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_event_edit')]
-    public function edit(Event $event, EntityManagerInterface $entityManager): Response
+    public function edit(Event $event, EntityManagerInterface $entityManager, Request $request): Response
     {
-        $event->setName('Hip Hop');
-        $event->setDescription('super Hip Hop Event');
-        $event->setBookedSeats(200);
-        $entityManager->persist($event);
-        $entityManager->flush();
+//        $event->setName('Hip Hop');
+//        $event->setDescription('super Hip Hop Event');
+//        $event->setBookedSeats(200);
 
-//        dd($location);
-        return $this->redirectToRoute('app_event_show', ['id' => $event->getId()]);
+        $form = $this->createForm(EventFormType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $event = $form->getData();
+            $entityManager->persist($event);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_event_show', ['id' => $event->getId()]);
+        }
+
+        return $this->render('event/edit.html.twig', ['form' => $form->createView()]);
+
     }
 
     #[Route('/{id}/delete', name: 'app_event_delete')]

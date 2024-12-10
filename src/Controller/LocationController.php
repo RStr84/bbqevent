@@ -28,14 +28,21 @@ class LocationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_location_edit')]
-    public function edit(Location $location, EntityManagerInterface $entityManager): Response
+    public function edit(Location $location, EntityManagerInterface $entityManager, Request $request): Response
     {
-        $location->setName('The Street');
-        $entityManager->persist($location);
-        $entityManager->flush();
+        $form = $this->createForm(LocationFormType::class, $location);
+        $form->handleRequest($request);
 
-//        dd($location);
-        return $this->redirectToRoute('app_location_show', ['id' => $location->getId()]);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $location = $form->getData();
+            $entityManager->persist($location);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_location_show', ['id' => $location->getId()]);
+        }
+
+        return $this->render('location/edit.html.twig', ['form' => $form->createView()]);
+
+//        $location->setName('The Street');
     }
 
     #[Route('/{id}/delete', name: 'app_location_delete')]
