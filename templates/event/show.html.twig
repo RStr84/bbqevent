@@ -8,13 +8,12 @@
 
 {% block content %}
     <div>
-        Das Event mit der ID [{{ event.id }}] beinhaltet folgende Eventdaten:<br>
+        Das Event beinhaltet folgende Eventdaten:<br>
         <br>
         Name: {{ event.name }}<br>
         Beschreibung: {{ event.description }}<br>
         Gebuchte Plätze: {{ event.bookedSeats }}<br>
         <br>
-
 
         <a class='btn-primary btn' href='{{ path('app_event_edit', {id: event.id}) }}'>Edit</a>
         <a class='btn-danger btn' href='{{ path('app_event_delete', {id: event.id}) }}'>Delete</a>

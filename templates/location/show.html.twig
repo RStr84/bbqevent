@@ -8,13 +8,13 @@
 
 {% block content %}
     <div>
-        Die Location mit der ID [{{ location.id }}] beinhaltet folgende Locationdaten:<br>
+        Die Location beinhaltet folgende Locationdaten:<br>
         <br>
         Name: {{ location.name }}<br>
         Kapazität: {{ location.capacity }}<br>
         Adresse: {{ location.address }}<br>
+        E-Mail: {{ location.email }}<br>
         <br>
-
 
         <a class='btn-primary btn' href='{{ path('app_location_edit', {id: location.id}) }}'>Edit</a>
         <a class='btn-danger btn' href='{{ path('app_location_delete', {id: location.id}) }}'>Delete</a>

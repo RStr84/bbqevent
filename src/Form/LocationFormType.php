@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Location;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -40,6 +41,15 @@ class LocationFormType extends AbstractType
                     'placeholder' => 'Bitte trage die Adresse ein!'
                 ]
             ])
+            ->add('email', EmailType::class, [
+                'label' => 'E-Mail',
+                'required' => true,
+                'attr' => [
+                    'style' =>'background-color: white;',
+                    'placeholder' => 'Bitte trage eine E-Mail-Adresse ein!'
+                ]
+            ])
+
             ->add('save', SubmitType::class)
             ->add('reset', ResetType::class);
         ;

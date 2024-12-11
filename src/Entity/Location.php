@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\LocationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: LocationRepository::class)]
 class Location
@@ -14,13 +15,33 @@ class Location
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
+    #[Assert\Length(
+        min: 5,
+        max: 50,
+        minMessage: 'Das muss min. {{ limit }} Zeichen lang sein!',
+        maxMessage: 'Das darf max. {{ limit }} Zeichen lang sein!')]
     private ?string $name = null;
 
     #[ORM\Column]
     private ?int $capacity = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
+    #[Assert\Length(
+        min: 5,
+        max: 50,
+        minMessage: 'Das muss min. {{ limit }} Zeichen lang sein!',
+        maxMessage: 'Das darf max. {{ limit }} Zeichen lang sein!'
+    )]
     private ?string $address = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
+    #[Assert\Email(message:'Das ist keine korrekte E-Mail-Adresse!')]
+    private ?string $email = null;
+
+
 
     public function getId(): ?int
     {
@@ -59,6 +80,18 @@ class Location
     public function setAddress(string $address): static
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }
