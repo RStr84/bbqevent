@@ -13,7 +13,7 @@
         Name: {{ event.name }}<br>
         Beschreibung: {{ event.description }}<br>
         Gebuchte Plätze: {{ event.bookedSeats }}<br>
-        Eventtyp: {{ event.eventType.value }}<br>
+        Eventtyp: {{ event.eventType.value ??'' }}<br>
         <br>
 
         <a class='btn-primary btn' href='{{ path('app_event_edit', {id: event.id}) }}'>Edit</a>
