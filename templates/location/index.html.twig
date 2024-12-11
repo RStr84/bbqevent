@@ -7,7 +7,13 @@
 
 {% block content %}
     {% for location in locations %}
-        <div><a href="{{ path('app_location_show', {id: location.id}) }}">{{ location.name }}</a></div>
+
+{#        <div><a href="{{ path('app_location_show', {id: location.id}) }}">{{ location.name }}</a></div>#}
+
+        <div>{{ location.name }}<br>
+        <a class='btn-primary btn' href="{{ path('app_location_show', {id: location.id}) }}">Details</a>
+        </div><br>
+
     {%  endfor %}
 
     <a class='btn-primary btn' href="{{ path('app_location_new') }}">New</a>

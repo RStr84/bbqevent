@@ -15,6 +15,12 @@ class Event
     private ?int $id = null;
 
     #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
+    #[Assert\Length(
+        min: 5,
+        max: 30,
+        minMessage: 'Das ist zu kurz!',
+        maxMessage: 'Das ist zu lang!'
+    )]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
