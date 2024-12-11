@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\LocationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 #[ORM\Entity(repositoryClass: LocationRepository::class)]
+#[UniqueEntity('email', message: '{{ value }} ist schon in Gebrauch!')]
 class Location
 {
     #[ORM\Id]
@@ -42,7 +45,7 @@ class Location
     private ?string $address = null;
 
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
     #[Assert\Length(
         min: 5,
