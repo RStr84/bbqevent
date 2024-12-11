@@ -9,10 +9,27 @@
 
 {% block content %}
 
-{#    <div>Bitte Daten einfügen!</div>#}
-{#    <br>#}
+    {#    {{ form(form) }}#}
 
-    {{ form(form) }}
+    {{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate'}}) }}
+
+    {{ form_row(form.name, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.name) }}
+
+    {{ form_row(form.eventType) }}
+
+    {{ form_row(form.description, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.description) }}
+
+    {{ form_row(form.bookedSeats, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.bookedSeats) }}
+
+    {{ form_row(form.save) }}
+{#    {{ form_row(form.save, {'attr': {'class': 'btn-danger'}}) }}#}
+
+    {{ form_row(form.reset) }}
+
+    {{ form_end(form) }}
 
 
 
