@@ -43,7 +43,11 @@ class EventFormType extends AbstractType
                     'min' => 0
                 ]
             ])
-            ->add('eventType', EnumType::class, ['class' => EventTypeEnum::class])
+            ->add('eventType', EnumType::class, ['class' => EventTypeEnum::class ,
+                'expanded' => true,
+                'multiple' => true,
+                'label' => 'Eventtyp',
+                ])
 
             ->add('save', SubmitType::class)
             ->add('reset', ResetType::class);
