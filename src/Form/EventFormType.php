@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Event;
+use App\Entity\EventTypeEnum;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -41,6 +43,8 @@ class EventFormType extends AbstractType
                     'min' => 0
                 ]
             ])
+            ->add('eventType', EnumType::class, ['class' => EventTypeEnum::class])
+
             ->add('save', SubmitType::class)
             ->add('reset', ResetType::class);
         ;

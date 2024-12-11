@@ -34,6 +34,10 @@ class Event
     #[Assert\PositiveOrZero(message: 'Der Wert muss größer/gleich 0 sein!')]
     private ?int $bookedSeats = null;
 
+    #[ORM\Column(nullable: true, enumType: EventTypeEnum::class)]
+    private ?EventTypeEnum $eventType = null;
+
+
 
 
     public function getId(): ?int
@@ -80,6 +84,21 @@ class Event
     public function seats(): int
     {
         return 200 - $this->bookedSeats;
+    }
+
+    /**
+     * @return ?EventTypeEnum
+     */
+    public function getEventType(): ?EventTypeEnum
+    {
+        return $this->eventType;
+    }
+
+    public function setEventType(?EventTypeEnum $eventType): static
+    {
+        $this->eventType = $eventType;
+
+        return $this;
     }
 
 
