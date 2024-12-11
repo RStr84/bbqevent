@@ -7,7 +7,10 @@
 
 {% block content %}
     {% for event in events %}
-<div><a href="{{ path('app_event_show', {id: event.id}) }}">{{ event.name }}</a></div>
+        <div><a href="{{ path('app_event_show', {id: event.id}) }}">{{ event.name }}</a></div>
     {%  endfor %}
+
+    <a class='btn-primary btn' href="{{ path('app_event_new') }}">NEW</a>
+
 {% endblock %}
 

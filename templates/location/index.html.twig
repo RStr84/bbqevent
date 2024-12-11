@@ -9,4 +9,7 @@
     {% for location in locations %}
         <div><a href="{{ path('app_location_show', {id: location.id}) }}">{{ location.name }}</a></div>
     {%  endfor %}
+
+    <a class='btn-primary btn' href="{{ path('app_location_new') }}">NEW</a>
+
 {% endblock %}
