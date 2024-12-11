@@ -19,7 +19,7 @@ class LocationFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Locationname',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'style' =>'background-color: white;',
                     'placeholder' => 'Bitte trage die Location ein!'
@@ -27,7 +27,7 @@ class LocationFormType extends AbstractType
             ])
             ->add('capacity', IntegerType::class,[
                 'label' => 'Kapazität',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'style' =>'background-color: white;',
                     'placeholder' => 'Bitte trage die Kapazität der Location ein!'
@@ -35,7 +35,7 @@ class LocationFormType extends AbstractType
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'style' =>'background-color: white;',
                     'placeholder' => 'Bitte trage die Adresse ein!'
@@ -43,7 +43,7 @@ class LocationFormType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label' => 'E-Mail',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'style' =>'background-color: white;',
                     'placeholder' => 'Bitte trage eine E-Mail-Adresse ein!'

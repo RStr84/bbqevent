@@ -14,30 +14,42 @@ class Location
     #[ORM\Column]
     private ?int $id = null;
 
+
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
     #[Assert\Length(
         min: 5,
         max: 50,
-        minMessage: 'Das muss min. {{ limit }} Zeichen lang sein!',
-        maxMessage: 'Das darf max. {{ limit }} Zeichen lang sein!')]
+        minMessage: 'Das muss min. {{ limit }} Zeichen haben!',
+        maxMessage: 'Das darf max. {{ limit }} Zeichen haben!')]
     private ?string $name = null;
 
+
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
+    #[Assert\PositiveOrZero(message: 'Der Wert muss größer/gleich 0 sein!')]
     private ?int $capacity = null;
+
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
     #[Assert\Length(
         min: 5,
         max: 50,
-        minMessage: 'Das muss min. {{ limit }} Zeichen lang sein!',
-        maxMessage: 'Das darf max. {{ limit }} Zeichen lang sein!'
+        minMessage: 'Das muss min. {{ limit }} Zeichen haben!',
+        maxMessage: 'Das darf max. {{ limit }} Zeichen haben!'
     )]
     private ?string $address = null;
 
+
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Das darf nicht leer sein!')]
+    #[Assert\Length(
+        min: 5,
+        max: 50,
+        minMessage: 'Das muss min. {{ limit }} Zeichen haben!',
+        maxMessage: 'Das darf max. {{ limit }} Zeichen haben!'
+    )]
     #[Assert\Email(message:'Das ist keine korrekte E-Mail-Adresse!')]
     private ?string $email = null;
 

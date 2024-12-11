@@ -14,22 +14,27 @@ class Event
     #[ORM\Column]
     private ?int $id = null;
 
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
     #[Assert\Length(
         min: 5,
-        max: 30,
-        minMessage: 'Das ist zu kurz!',
-        maxMessage: 'Das ist zu lang!'
+        max: 100,
+        minMessage: 'Das muss min. {{ limit }} Zeichen haben!',
+        maxMessage: 'Das darf max. {{ limit }} Zeichen haben!'
     )]
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
-    #[ORM\Column(length: 255)]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
+    #[Assert\PositiveOrZero(message: 'Der Wert muss größer/gleich 0 sein!')]
     private ?int $bookedSeats = null;
+
+
 
     public function getId(): ?int
     {

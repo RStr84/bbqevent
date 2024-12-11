@@ -37,7 +37,8 @@ class EventFormType extends AbstractType
                 'label' => 'Gebuchte Tickets',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Bitte gebe die Anzahl gebuchter Tickets ein!'
+                    'placeholder' => 'Bitte gebe die Anzahl gebuchter Tickets ein!',
+                    'min' => 0
                 ]
             ])
             ->add('save', SubmitType::class)
