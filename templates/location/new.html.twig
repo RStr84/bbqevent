@@ -9,7 +9,28 @@
 
 {% block content %}
 
-    {{ form(form) }}
+{#    {{ form(form) }}#}
+
+    {{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate'}}) }}
+
+    {{ form_row(form.name, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.name) }}
+
+    {{ form_row(form.capacity, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.capacity) }}
+
+    {{ form_row(form.address, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.address) }}
+
+    {{ form_row(form.email, {'attr': {'style': 'background-color: lightgrey'}}) }}
+    {{ form_errors(form.email) }}
+
+    {{ form_row(form.save) }}
+{#        {{ form_row(form.save, {'attr': {'class': 'btn-danger'}}) }}#}
+
+    {{ form_row(form.reset) }}
+
+    {{ form_end(form) }}
 
 {% endblock %}
 
