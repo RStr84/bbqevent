@@ -46,7 +46,7 @@ class EventFormType extends AbstractType
             ])
             ->add('eventType', EnumType::class, ['class' => EventTypeEnum::class ,
                 'expanded' => true,
-                'multiple' => true,
+                'multiple' => false,
                 'label' => 'Eventtyp',
                 ])
 
