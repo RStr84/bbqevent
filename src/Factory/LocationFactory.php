@@ -48,7 +48,7 @@ final class LocationFactory extends PersistentProxyObjectFactory
         return $this->afterInstantiate(function(Location $location): void {
 
             $lName = explode(" ", $location->getName())[0];
-            $location->setEmail($lName. '@' .self::faker()->freeEmailDomain. '.' . self::faker()->tld());
+            $location->setEmail($lName. '@' .self::faker()->freeEmailDomain);
         });
     }
 }
