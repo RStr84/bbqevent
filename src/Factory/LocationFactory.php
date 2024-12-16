@@ -32,9 +32,9 @@ final class LocationFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'name' => self::faker()->city(255),
+            'name' => self::faker()->company(255),
             'capacity' => self::faker()->numberBetween(50, 1500),
-            'address' => self::faker()->streetAddress(),
+            'address' => self::faker()->Address(),
             'email' => "",
 
         ];
