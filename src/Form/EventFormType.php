@@ -54,6 +54,7 @@ class EventFormType extends AbstractType
             ->add('location', EntityType::class, [
                 'class' => Location::class,
                 'choice_label' => 'name',
+                'placeholder' => 'Bitte gebe eine Location an!',
 //                'label' => 'Extra',
 //                'expanded' => true,
             ])
