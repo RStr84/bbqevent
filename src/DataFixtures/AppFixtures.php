@@ -17,28 +17,30 @@ class AppFixtures extends Fixture
         // 1-2 Datensätze für besondere Rechte → Admin/User //
 
         // Event //
-        $event = new Event();
-        $event->setName('Event 1');
-        $event->setEventType(EventTypeEnum::Party);
-        $event->setDescription('Description 1');
-        $event->setBookedSeats(150);
-
-        // Datensatz Faker //
-        EventFactory::createMany(100);
+//        $event = new Event();
+//        $event->setName('Event 1');
+//        $event->setEventType(EventTypeEnum::Party);
+//        $event->setDescription('Description 1');
+//        $event->setBookedSeats(150);
+//        $manager->persist($event);
+//        $manager->flush();
 
         // Location //
-        $location = new Location();
-        $location->setName('Location 1');
-        $location->setCapacity(1000);
-        $location->setAddress('Address 1');
-        $location->setEmail('email@email.com');
+//        $location = new Location();
+//        $location->setName('Location 1');
+//        $location->setCapacity(1000);
+//        $location->setAddress('Address 1');
+//        $location->setEmail('email@email.com');
+//        $manager->persist($location);
+//        $manager->flush();
 
         // Datensatz Faker //
-        LocationFactory::createMany(100);
+        LocationFactory::createMany(10);
+        EventFactory::createMany(30, function() {
+            return ['location' => LocationFactory::random()];
+        });
 
         // Erstellen und Datenbank hinzufügen //
-        $manager->persist($event);
-        $manager->persist($location);
         $manager->flush();
     }
 }

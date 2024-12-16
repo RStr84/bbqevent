@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Event;
 use App\Entity\EventTypeEnum;
+use App\Entity\Location;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -49,6 +51,12 @@ class EventFormType extends AbstractType
                 'multiple' => false,
                 'label' => 'Eventtyp',
                 ])
+            ->add('location', EntityType::class, [
+                'class' => Location::class,
+                'choice_label' => 'name',
+//                'label' => 'Extra',
+//                'expanded' => true,
+            ])
 
             ->add('save', SubmitType::class)
             ->add('reset', ResetType::class);

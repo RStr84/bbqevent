@@ -23,7 +23,7 @@ class Event
     #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
     #[Assert\Length(
         min: 5,
-        max: 100,
+        max: 220,
         minMessage: 'Das muss min. {{ limit }} Zeichen haben!',
         maxMessage: 'Das darf max. {{ limit }} Zeichen haben!'
     )]
@@ -36,6 +36,9 @@ class Event
 
     #[ORM\Column(nullable: true, enumType: EventTypeEnum::class)]
     private ?EventTypeEnum $eventType = null;
+
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    private ?Location $location = null;
 
 
 
@@ -97,6 +100,18 @@ class Event
     public function setEventType(?EventTypeEnum $eventType): static
     {
         $this->eventType = $eventType;
+
+        return $this;
+    }
+
+    public function getLocation(): ?Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?Location $location): static
+    {
+        $this->location = $location;
 
         return $this;
     }
