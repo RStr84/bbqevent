@@ -15,9 +15,14 @@
         Adresse: {{ location.address }}<br>
         E-Mail: {{ location.email }}<br>
 
-
-
-
+        {% if location.events %}
+        Events:
+            {% for event in location.events %}
+                <li>
+                    <a href="{{ path('app_event_show', {'id': event.id}) }}">{{ event.name }}</a>
+                </li>
+            {% endfor %}
+        {% endif %}
         <br>
 
         <a class='btn-primary btn' href='{{ path('app_location_edit', {id: location.id}) }}'>Edit</a>
