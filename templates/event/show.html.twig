@@ -14,7 +14,10 @@
         Eventtyp: {{ event.eventType.value ??'' }}<br>
         Beschreibung: {{ event.description }}<br>
         Gebuchte Plätze: {{ event.bookedSeats }}<br>
+
+        {% if event.location %}
         Location: <a href="{{ path('app_location_show', {id: event.location.id}) }}">{{ event.location.name }}</a><br>
+        {% endif %}
         <br>
 
         <a class='btn-primary btn' href='{{ path('app_event_edit', {id: event.id}) }}'>Edit</a>
