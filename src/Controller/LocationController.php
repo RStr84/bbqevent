@@ -58,12 +58,43 @@ class LocationController extends AbstractController
 //
 //        }
 //        dd($location->getEvents());
-        $entityManager->remove($location);
-        $entityManager->flush();
+//        $entityManager->remove($location);
+//        $entityManager->flush();
 //        dd($location);
-        return $this->redirectToRoute('app_location_index');
+//        return $this->redirectToRoute('app_location_index');
 //        $location = $locationRepository->findById($id);
 //        return new Response('Hier kommt Delete hin!'), wenn kein twig erstellen
+
+
+        // Überprüfung, ob Events vorhanden sind //
+//        if (count($location->getEvents()) > 0) {
+//            // Option 1: Errormessage
+//            $this->addFlash('error', 'Location kann aufgrund FK-Constraints nicht gelöscht werden.');
+//            return $this->redirectToRoute('app_location_show', ['id' => $location->getId()]);
+
+             //Option 2: Löschen der Events//
+//             foreach ($location->getEvents() as $event) {
+//                 $entityManager->remove($event);
+//             }
+//        }
+
+//        // Proceed to delete the location
+//        $entityManager->remove($location);
+//        $entityManager->flush();
+//
+//        return $this->redirectToRoute('app_location_index');
+
+
+        // Manuel Version, FK auf NULL setzen //
+
+        foreach ($location->getEvents() as $event) {
+            $event->setLocation(null);
+        }
+         $entityManager->remove($location);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_location_index');
+
+
     }
 
 

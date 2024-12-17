@@ -16,6 +16,9 @@
         E-Mail: {{ location.email }}<br>
 
         {% if location.events %}
+{#            <div class="alert alert-warning">#}
+{#                Diese Location kann nicht gelöscht werden, da noch Events vorhanden sind!!!#}
+{#            </div>#}
         Events:
             {% for event in location.events %}
                 <li>
