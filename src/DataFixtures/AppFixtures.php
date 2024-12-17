@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
 
         // Datensatz Faker //
         LocationFactory::createMany(10);
-        EventFactory::createMany(30, function() {
+        EventFactory::createMany(100, function() {
             return ['location' => LocationFactory::random()];
         });
 
