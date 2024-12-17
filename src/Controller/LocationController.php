@@ -52,12 +52,12 @@ class LocationController extends AbstractController
     {
 //        $location = $locationRepository->find($id);
 
-        $event = [];
-        foreach ($location->getEvents() as $event) {
-            $events[] = $event;
-
-        }
-        dd($location->getEvents());
+//        $event = [];
+//        foreach ($location->getEvents() as $event) {
+//            $events[] = $event;
+//
+//        }
+//        dd($location->getEvents());
         $entityManager->remove($location);
         $entityManager->flush();
 //        dd($location);
