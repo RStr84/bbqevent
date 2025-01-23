@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    <form action="{{ path('app_login') }}" method="post">
+        <input name="email" type="email" placeholder="Email"><br>
+        <input name="password" type="password" placeholder="Passwort"><br>
+        <input type="submit">
+        <input type="checkbox" name="_remember_me">
+    </form>
+
+    {{ error.messageKey | default('') }}
+
+{% endblock %}

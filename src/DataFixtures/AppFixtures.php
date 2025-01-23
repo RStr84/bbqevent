@@ -7,6 +7,7 @@ use App\Entity\EventTypeEnum;
 use App\Entity\Location;
 use App\Factory\EventFactory;
 use App\Factory\LocationFactory;
+use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -35,6 +36,8 @@ class AppFixtures extends Fixture
 //        $manager->flush();
 
         // Datensatz Faker //
+        UserFactory::createOne(['email' => 'admin@bbq.de', 'fname' => 'Raphael', 'lname' => 'Straschewski', 'plainPassword' => 'admin']);
+        UserFactory::createMany(25);
         LocationFactory::createMany(10);
         EventFactory::createMany(100, function() {
             return ['location' => LocationFactory::random()];

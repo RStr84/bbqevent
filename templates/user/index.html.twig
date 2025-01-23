@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    Users
+{% endblock %}
+
+{% block content %}
+    {% for user in users %}
+
+        <div>{{ user.fname }}</div>
+        <div>{{ user.lname }}</div>
+        <div>{{ user.email }}</div><br>
+
+    {%  endfor %}
+
+{#    <a class='btn-primary btn' href="{{ path('app_user_new') }}">New</a>#}
+
+{% endblock %}
